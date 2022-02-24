@@ -4,7 +4,7 @@ export const beerDataSlice = createSlice({
   name: 'beer',
   initialState: {
     data: {},
-    displayedData: {},
+    displayedData: false,
   },
   reducers: {
     stash: (state, action) => {
