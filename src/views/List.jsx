@@ -2,8 +2,11 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 
+import {ListNode} from './components';
+
 export const List = () => {
   const data = useSelector((state) => state.beer.displayedData);
+  data ? data.map((item)=>console.log(item.abv)) : null;
 
   return (
     data ? (
@@ -20,7 +23,16 @@ export const List = () => {
         </Col>
         {
           data.map((item) => (
-              null
+            <Col xs="12" key={item.name}>
+              <ListNode
+                name={item.name}
+                category={item.category}
+                abv={item.abv}
+                ibu={item.ibu}
+                location={item.city}
+                website={item.website}
+              />
+            </Col>
           ))
         }
       </Row>
