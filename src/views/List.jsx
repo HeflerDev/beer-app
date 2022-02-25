@@ -12,7 +12,7 @@ export const List = () => {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
-  const itemsPerPage = 20;
+  const itemsPerPage = 18;
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -27,27 +27,17 @@ export const List = () => {
 
   return (
     data && currentItems ? (
-      <Row className="list">
-        <Col xs={12}>
-          <ul>
-            <li>Name</li>
-            <li>Category</li>
-            <li>ABV</li>
-            <li>IBU</li>
-            <li>Location</li>
-            <li>Website</li>
-          </ul>
-        </Col>
-        <Col xs={12} >
+      <Row className="list justify-content-center">
+        <Row xs={12}>
           {
             currentItems.map((item) => (
-              <Col xs={12} key={item.name}>
+              <Col xs={12} lg={4} xxl={3} md={6} key={item.name}>
                 <ListNode item={item} />
               </Col>
             ))
           }
           <Paginate handlePageClick={handlePageClick} pageCount={pageCount}/>
-        </Col>
+        </Row>
       </Row>
     ) : (
       null

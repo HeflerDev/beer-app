@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import Big from 'big.js';
 
 export const ListNode = ({item}) => (
-  <ul>
-    <li>{item.name}</li>
-    <li>{item.category ? item.category : "Uncategorized"}</li>
-    <li>{new Big(item.abv).toFixed(3)}</li>
-    <li>{item.ibu}</li>
-    <li>{item.city}</li>
+  <ul className="catalog-node">
+    <li><b>Name: </b>{item.name}</li>
+    <li><b>Category: </b>{item.category ? item.category : 'Uncategorized'}</li>
+    <li><b>ABV: </b>{new Big(item.abv).toFixed(3)}</li>
+    <li><b>IBU: </b>{item.ibu}</li>
+  <li><b>Location:</b>{item.city + ', ' + item.country}</li>
     <li>
+        <b>Website: </b>
       {
         item.website ?
         <a href={item.website}>
