@@ -1,33 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactPaginate from 'react-paginate';
+import PropTypes from 'prop-types';
 
-export const Paginate = ({ itemsPerPage }) => {
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
+export const Paginate = ({handlePageClick, pageCount}) => (
+  <ReactPaginate
+    breakLabel="..."
+    nextLabel="next >"
+    onPageChange={handlePageClick}
+    pageRangeDisplayed={5}
+    pageCount={pageCount}
+    previousLabel="< previous"
+    renderOnZeroPageCount={null}
+  />
+);
 
-  useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    setItemOffset(newOffset);
-  };
-
-  return (
-    <>
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
-    </>
-  );
-}
+Paginate.propTypes = {
+  handlePageClick: PropTypes.func.isRequired,
+  pageCount: PropTypes.number.isRequired,
+};

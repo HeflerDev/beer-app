@@ -4,10 +4,11 @@ import {stash} from './store/beerDataSlice';
 import {Container} from 'react-bootstrap';
 
 import {Header} from './views';
-import { List } from './views';
+import {List} from './views';
 
 const App = () => {
   const data = useSelector((state) => state.beer.data);
+  const displayedData = useSelector((state) => state.beer.displayedData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +24,9 @@ const App = () => {
       typeof data === 'object' ? (
         <>
           <Header />
-          <List />
+          {
+            displayedData && <List />
+          }
         </>
       ) : (
         'Loading...'

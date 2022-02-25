@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 export const beerDataSlice = createSlice({
   name: 'beer',
   initialState: {
-    data: {},
+    data: false,
     displayedData: false,
   },
   reducers: {

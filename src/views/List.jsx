@@ -1,16 +1,33 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 
 import {ListNode} from './components';
+import {Paginate} from './utils';
 
 export const List = () => {
   const data = useSelector((state) => state.beer.displayedData);
-  data ? data.map((item)=>console.log(item.abv)) : null;
+
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const itemsPerPage = 20;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(data.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(data.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % data.length;
+    setItemOffset(newOffset);
+  };
 
   return (
-    data ? (
-      <Row>
+    data && currentItems ? (
+      <Row className="list">
         <Col xs={12}>
           <ul>
             <li>Name</li>
@@ -21,20 +38,16 @@ export const List = () => {
             <li>Website</li>
           </ul>
         </Col>
-        {
-          data.map((item) => (
-            <Col xs="12" key={item.name}>
-              <ListNode
-                name={item.name}
-                category={item.category}
-                abv={item.abv}
-                ibu={item.ibu}
-                location={item.city}
-                website={item.website}
-              />
-            </Col>
-          ))
-        }
+        <Col xs={12} >
+          {
+            currentItems.map((item) => (
+              <Col xs={12} key={item.name}>
+                <ListNode item={item} />
+              </Col>
+            ))
+          }
+          <Paginate handlePageClick={handlePageClick} pageCount={pageCount}/>
+        </Col>
       </Row>
     ) : (
       null

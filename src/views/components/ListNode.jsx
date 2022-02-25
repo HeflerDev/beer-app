@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ListNode = ({name, category, abv, ibu, location, website}) => (
+import Big from 'big.js'
+
+export const ListNode = ({item}) => (
   <ul>
-    <li>{name}</li>
-    <li>{category}</li>
-    <li>{abv}</li>
-    <li>{ibu}</li>
-    <li>{location}</li>
-    <li>{website}</li>
+    <li>{item.name}</li>
+    <li>{item.category}</li>
+    <li>{new Big(item.abv).toFixed(3)}</li>
+    <li>{item.ibu}</li>
+    <li>{item.city}</li>
+  <li>{item.website ? item.website : "No Website Avaiable"}</li>
   </ul>
 );
 
 ListNode.propTypes = {
-  name: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  abv: PropTypes.string.isRequired,
-  ibu: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  website: PropTypes.string.isRequired,
+  item: {
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    abv: PropTypes.string.isRequired,
+    ibu: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    website: PropTypes.string,
+  },
 };
