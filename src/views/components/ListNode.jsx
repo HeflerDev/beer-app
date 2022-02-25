@@ -1,16 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Big from 'big.js'
+import Big from 'big.js';
 
 export const ListNode = ({item}) => (
   <ul>
     <li>{item.name}</li>
-    <li>{item.category}</li>
+    <li>{item.category ? item.category : "Uncategorized"}</li>
     <li>{new Big(item.abv).toFixed(3)}</li>
     <li>{item.ibu}</li>
     <li>{item.city}</li>
-  <li>{item.website ? item.website : "No Website Avaiable"}</li>
+    <li>
+      {
+        item.website ?
+        <a href={item.website}>
+          {
+            item.website.match(/\.\w*/g).join('').split('').slice(1)
+          }
+        </a> :
+        'No Website Avaiable'
+      }
+    </li>
   </ul>
 );
 
