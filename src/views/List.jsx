@@ -30,8 +30,8 @@ export const List = () => {
       <Row className="list justify-content-center">
         <Row xs={12}>
           {
-            currentItems.map((item) => (
-              <Col xs={12} lg={4} xxl={3} md={6} key={item.name}>
+            currentItems.map((item, index) => (
+              <Col xs={12} lg={4} xxl={3} md={6} key={`${item.name} ${index}`}>
                 <ListNode item={item} />
               </Col>
             ))

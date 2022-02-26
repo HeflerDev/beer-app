@@ -6,6 +6,8 @@ import {Container} from 'react-bootstrap';
 import {Header} from './views';
 import {List} from './views';
 
+import Bg from './assets/images/pattern.png';
+
 const App = () => {
   const data = useSelector((state) => state.beer.data);
   const displayedData = useSelector((state) => state.beer.displayedData);
@@ -19,11 +21,12 @@ const App = () => {
   }, []);
 
   return (
-    <Container>
-      {
+    <main style={{'background': `url(${Bg})`, 'background-size': '50%'}}>
+      <Header />
+      <Container className="page-container">
+        {
       typeof data === 'object' ? (
         <>
-          <Header />
           {
             displayedData && <List />
           }
@@ -31,8 +34,9 @@ const App = () => {
       ) : (
         'Loading...'
       )
-      }
-    </Container>
+        }
+      </Container>
+    </main>
   );
 };
 

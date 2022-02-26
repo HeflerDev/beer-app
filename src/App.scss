@@ -9,6 +9,23 @@ $light: #e2e2e2;
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background-image: url("./assets/images/pattern.png");
+}
+
+.page-container {
+  background-color: #ffffff95;
+  box-shadow: 0 0 10px $dark;
+  border-radius: 10px;
+}
+
+main {
+  min-height: 100vh;
+  background-size: 50%;
+}
+
+.row {
+  padding: 0;
+  margin:0;
 }
 
 svg {
@@ -22,7 +39,6 @@ h1 {
 $theme-colors: (
   "primary":#633812
 );
-
 
 @import "./assets/styles/lists.scss";
 @import "./assets/styles/buttons.scss";

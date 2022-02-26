@@ -9,8 +9,8 @@ import {Provider} from 'react-redux';
 import App from './App';
 import './App.scss';
 
-const reactApp = document.createElement("div")
-document.body.appendChild(reactApp)
+const reactApp = document.createElement('div');
+document.body.appendChild(reactApp);
 
 ReactDOM.render(
     <Provider store={store}>

@@ -5,12 +5,19 @@ import PropTypes from 'prop-types';
 export const Paginate = ({handlePageClick, pageCount}) => (
   <ReactPaginate
     breakLabel="..."
-    nextLabel="next >"
+    nextLabel=">"
     onPageChange={handlePageClick}
-    pageRangeDisplayed={5}
+    pageRangeDisplayed={1}
+    marginPagesDisplayed={2}
     pageCount={pageCount}
-    previousLabel="< previous"
+    previousLabel="<"
     renderOnZeroPageCount={null}
+    pageClassName="page-number"
+    activeClassName="page-number-active"
+    nextClassName="next"
+    previousClassName="previous"
+    disabledClassName="npdisabled"
+    breakClassName="break"
   />
 );
 

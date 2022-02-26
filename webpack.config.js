@@ -38,7 +38,7 @@ module.exports = {
         use: [
           'file-loader'
         ]
-      }
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin()],

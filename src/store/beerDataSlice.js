@@ -5,24 +5,26 @@ export const beerDataSlice = createSlice({
   initialState: {
     data: false,
     displayedData: false,
-    queryType: '',
+    queryType: 'byName',
   },
   reducers: {
     stash: (state, action) => {
       state.data = action.payload;
     },
-    display: (state, action ) => {
+    display: (state, action) => {
       if (action.payload) {
-        console.log(action.payload)
         state.displayedData = action.payload;
       } else {
         state.displayedData = state.data;
       }
     },
+    setQueryType: (state, action) => {
+      state.queryType = action.payload;
+    },
   },
 });
 
-export const {stash, display} = beerDataSlice.actions;
+export const {stash, display, setQueryType} = beerDataSlice.actions;
 
 export default beerDataSlice.reducer;
 

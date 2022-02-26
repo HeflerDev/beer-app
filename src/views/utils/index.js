@@ -1,1 +1,1 @@
-export {Paginate} from "./Paginate.jsx"
+export {Paginate} from './Paginate.jsx';

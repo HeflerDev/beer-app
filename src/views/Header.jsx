@@ -1,11 +1,13 @@
 import React from 'react';
 
 import {
+  Container,
   Row,
   Col,
+  Image,
+  Button
 } from 'react-bootstrap';
-import {Bottle} from '../assets/icons';
-import {Button} from './components';
+import logo from '../assets/images/Fundos cerveja.png'
 import {Form} from './';
 
 import {useDispatch, useSelector} from 'react-redux';
@@ -20,19 +22,19 @@ export const Header = () => {
   return (
     <Row className="justify-content-center">
       <Col xs={12} md={8} lg={6}>
-        <Bottle size={'100%'} colorPrimary="#613710" colorSecondary='#e4b629' />
-      </Col>
-      <Col xs={12} md={4} className="d-flex justify-content-center flex-column">
-        <h1>The Golden Bottle</h1>
-        <p>Knowledge that every Beer Master needs</p>
+    <Image fluid src={logo} />
       </Col>
       <Row className="justify-content-center">
         <Col xs={12}>
           {
       hasData ? (
-        <Form />
+        <Container>
+          <Form />
+        </Container>
             ) : (
-              <Button onClick={handleClickOnFullList} text="Check the full List" />
+              <Col sm={12}>
+                <Button size="lg" onClick={handleClickOnFullList}><b>GO FIND IT!</b></Button>
+              </Col>
             )
           }
         </Col>

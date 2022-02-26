@@ -1,21 +1,48 @@
 const filters = {
-  byAbv(params) {
-
+  byAbv(data, query) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.abv)) {
+        res.push(item);
+      }
+    });
+    return (res);
   },
-  byAdress(params) {
-
+  byCategory(data, query) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.category)) {
+        res.push(item);
+      }
+    });
+    return (res);
   },
-  byCategory(params) {
-
+  byCity(data, query) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.city)) {
+        res.push(item);
+      }
+    });
+    return (res);
   },
-  byCity(params) {
-
+  byCountry(data, query) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.country)) {
+        res.push(item);
+      }
+    });
+    return (res);
   },
-  byCountry(params) {
-
-  },
-  byIbu(params) {
-
+  byIbu(data, query) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.ibu)) {
+        res.push(item);
+      }
+    });
+    return (res);
   },
   byName(data, query) {
     const res = [];
@@ -26,7 +53,7 @@ const filters = {
     });
     return (res);
   },
-  byCity(params) {
+  byCity(data, query) {
     const res = [];
     data.forEach((item) => {
       if (new RegExp(query, 'gi').test(item.city)) {
