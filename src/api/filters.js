@@ -1,5 +1,3 @@
-
-
 const filters = {
   byAbv(params) {
 
@@ -19,12 +17,24 @@ const filters = {
   byIbu(params) {
 
   },
-  byName(params) {
-
+  byName(data, query) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.name)) {
+        res.push(item);
+      }
+    });
+    return (res);
   },
-  byState(params) {
-
-  }
-}
+  byCity(params) {
+    const res = [];
+    data.forEach((item) => {
+      if (new RegExp(query, 'gi').test(item.city)) {
+        res.push(item);
+      }
+    });
+    return (res);
+  },
+};
 
 export default filters;

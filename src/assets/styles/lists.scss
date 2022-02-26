@@ -7,7 +7,7 @@ ul {
 
 .catalog-node {
   display: flex;
-  margin: 1rem;
+  margin: 1rem 0;
   display:flex;
   flex-direction: column;
     &:hover {
@@ -21,6 +21,9 @@ ul {
     border: solid black 1px;
     padding: 0.5rem;
     overflow: scroll;
+    @media (min-width: map_get($grid-breakpoints, "md")) {
+      overflow: initial;
+    }
   }
 
 }

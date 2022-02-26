@@ -5,18 +5,18 @@ export const beerDataSlice = createSlice({
   initialState: {
     data: false,
     displayedData: false,
+    queryType: '',
   },
   reducers: {
     stash: (state, action) => {
       state.data = action.payload;
     },
-    display: (state, action = '') => {
-      switch (action) {
-        case 'orded':
-          break;
-        default:
-          state.displayedData = state.data;
-          break;
+    display: (state, action ) => {
+      if (action.payload) {
+        console.log(action.payload)
+        state.displayedData = action.payload;
+      } else {
+        state.displayedData = state.data;
       }
     },
   },
