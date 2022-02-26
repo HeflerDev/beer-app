@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+/* eslint-disable */
+import React, {useState} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {display} from '../store/beerDataSlice.js';
@@ -109,7 +110,7 @@ export const Form = () => {
   };
 
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <Row>
         <Col xs={12} >
           <DropdownInput onChange={handleChange} value={query}/>
@@ -129,3 +130,4 @@ export const Form = () => {
     </form>
   );
 };
+/* eslint-enable */

@@ -5,9 +5,9 @@ import {
   Row,
   Col,
   Image,
-  Button
+  Button,
 } from 'react-bootstrap';
-import logo from '../assets/images/Fundos cerveja.png'
+import logo from '../assets/images/Fundos cerveja.png';
 import {Form} from './';
 
 import {useDispatch, useSelector} from 'react-redux';
@@ -22,7 +22,7 @@ export const Header = () => {
   return (
     <Row className="justify-content-center">
       <Col xs={12} md={8} lg={6}>
-    <Image fluid src={logo} />
+        <Image fluid src={logo} />
       </Col>
       <Row className="justify-content-center">
         <Col xs={12}>
@@ -33,7 +33,12 @@ export const Header = () => {
         </Container>
             ) : (
               <Col sm={12}>
-                <Button size="lg" onClick={handleClickOnFullList}><b>GO FIND IT!</b></Button>
+                <Button
+                  size="lg"
+                  onClick={handleClickOnFullList}
+                >
+                  <b>GO FIND IT!</b>
+                </Button>
               </Col>
             )
           }

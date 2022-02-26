@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Button = ({onClick, disabled, text, className}) => (
+export const Button = ({onClick, disabled = false, text, className = ''}) => (
   <button
     onClick={onClick}
     disabled={disabled}
@@ -13,7 +13,8 @@ export const Button = ({onClick, disabled, text, className}) => (
 );
 
 Button.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   text: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {useDispatch} from 'react-redux';
 import {setQueryType} from '../../store/beerDataSlice';
@@ -75,4 +76,9 @@ export const DropdownInput = ({onChange, value}) => {
       </InputGroup>
     </>
   );
+};
+
+DropdownInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };

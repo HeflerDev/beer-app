@@ -1,28 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import Big from 'big.js';
 
 export const ListNode = ({item}) => {
-  const filterType = useSelector(state => state.beer.queryType)
+  const filterType = useSelector((state) => state.beer.queryType);
 
   const checkFilter = (filter) => {
     if (filterType === filter) {
-      return "active"
+      return 'active';
     }
-    return ('')
-  }
-  
+    return ('');
+  };
+
 
   return (
     <ul className="catalog-node">
-      <li className={checkFilter("byName")}><b>Name: </b>{item.name}</li>
-      <li className={checkFilter('byCategory')}><b>Category: </b>{item.category ? item.category : 'Uncategorized'}</li>
-      <li className={checkFilter('byAbv')}><b>ABV: </b>{new Big(item.abv).toFixed(3)} (%)</li>
-      <li className={checkFilter('byIbu')}><b>IBU: </b>{item.ibu} (ibu)</li>
-      <li className={checkFilter('byCity') + checkFilter('byState') + checkFilter('byCountry')}>
+      <li className={checkFilter('byName')}><b>Name: </b>{item.name}</li>
+      <li className={checkFilter('byCategory')}>
+
+        <b>Category: </b>{item.category ? item.category : 'Uncategorized'}
+      </li>
+      <li className={checkFilter('byAbv')}>
+
+        <b>ABV: </b>{new Big(item.abv).toFixed(3)} (%)
+      </li>
+      <li className={checkFilter('byIbu')}>
+
+        <b>IBU: </b>{item.ibu} (ibu)
+      </li>
+      <li className={checkFilter('byCity') +
+      checkFilter('byState') +
+      checkFilter('byCountry')}
+      >
         <b>
           Location:
         </b>
@@ -32,7 +44,7 @@ export const ListNode = ({item}) => {
         <b>Website: </b>
         {
           item.website ?
-          <a href={item.website}>
+          <a href={item.website} target="_blank" rel="noreferrer">
             {
               item.website.match(/\.\w*/g).join('').split('').slice(1)
             }
@@ -41,7 +53,7 @@ export const ListNode = ({item}) => {
         }
       </li>
     </ul>
-  )
+  );
 };
 
 ListNode.propTypes = {
