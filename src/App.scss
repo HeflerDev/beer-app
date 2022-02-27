@@ -1,0 +1,46 @@
+$primary: #633812;
+$secondary: #e4b629;
+$secondary-opacity: #e4b62904;
+$light: #e2e2e2;
+
+@import "bootstrap";
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url("./assets/images/pattern.png");
+}
+
+.page-container {
+  background-color: #ffffff95;
+  box-shadow: 0 0 10px $dark;
+  border-radius: 10px;
+}
+
+main {
+  min-height: 100vh;
+  background-size: 50%;
+}
+
+.row {
+  padding: 0;
+  margin:0;
+}
+
+svg {
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+$theme-colors: (
+  "primary":#633812
+);
+
+@import "./assets/styles/lists.scss";
+@import "./assets/styles/buttons.scss";
+@import "./assets/styles/forms.scss";
+
